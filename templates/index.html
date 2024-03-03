@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+</head>
+<body>
+    {% if current_user.is_authenticated %}
+        <h1>Welcome, {{ current_user.username }}!</h1>
+        <h2>Find a Recipe</h2>
+        <form action="/" method="post">
+            <label for="ingredients">Enter your ingredients:</label>
+            <input type="text" id="ingredients" name="ingredients">
+            <input type="submit" name="action" value="Search" class="input-submit">
+        </form>
+
+        <h2>Add to Pantry</h2>
+        <form action="/" method="post">
+            <label for="pantry_item">Add item to pantry:</label>
+            <input type="text" id="pantry_item" name="pantry_item">
+            <input type="submit" name="action" value="Add to Pantry" class="input-submit">
+        </form>
+
+        <h2>Your Pantry List</h2>
+        <ul class="pantry-list">
+            {% for item in pantry_list %}
+            <li>
+                {{ item }}
+                <form action="/remove_pantry_item" method="post" style="display: inline;">
+                    <input type="hidden" name="pantry_item" value="{{ item }}">
+                    <input type="submit" value="Remove" class="input-submit">
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+        
+        <div class="center-link">
+            <a href="/suggested_recipes">See Suggested Recipes</a>
+        </div>
+        
+        <br><br>
+        <form action="/suggested_recipes" method="get">
+            <h2>Select Ingredients to Use:</h2>
+            {% for item in pantry_list %}
+                <div>
+                    <input type="checkbox" id="ingredient-{{ loop.index }}" name="ingredients" value="{{ item }}">
+                    <label for="ingredient-{{ loop.index }}">{{ item }}</label>
+                </div>
+            {% endfor %}
+            <input type="submit" value="Find Recipes" class="input-submit">
+        </form>
+
+        <br>
+        <a href="/logout">Logout</a>
+
+    {% else %}
+        <p>Please <a href="/login">login</a> or <a href="/register">register</a> to manage your pantry and find recipes.</p>
+    {% endif %}
+</body>
+</html>

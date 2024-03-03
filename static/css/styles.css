@@ -1,0 +1,241 @@
+/* styles.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap');
+
+@media (max-width: 768px) {
+    .recipe {
+        flex: 1 1 calc(50% - 40px); /* Adjust for two items per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe {
+        flex: 1 1 100%; /* Full width for small screens */
+    }
+}
+
+
+h3 {
+    font-family: 'Merriweather', serif;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #fff3e0;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #d35400;
+    font-family: 'Merriweather', serif;
+}
+
+a {
+    color: #d35400;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ol li {
+    padding: 8px;
+    background-color: #f9e0ae;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+form {
+    margin-top: 20px;
+    background-color: #f0c987;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+input[type="text"], input[type="submit"] {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #e67e22;
+    color: white;
+    cursor: pointer;
+} */
+
+input[type="submit"]:hover {
+    background-color: #d35400;
+}
+
+
+.recipe ul {
+    list-style-type: disc; /* Default, but ensures bullet points are shown */
+    padding-left: 20px; /* Adds indentation to list */
+}
+
+.recipe ol {
+    list-style-type: decimal; /* Default, ensures items are numbered */
+    padding-left: 20px; /* Adds indentation to list */
+}
+
+.recipe li {
+    margin-bottom: 10px; /* Adds space between list items */
+}
+
+.recipe img {
+    width: 100%; /* Make the image fill the container width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: if you want rounded corners */
+    margin-bottom: 10px; /* Add some space between the image and the recipe title */
+}
+
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 20px; /* Adjust as needed */
+    padding: 20px; /* Adjust as needed */
+}
+
+
+.recipe {
+    flex: 1 1 calc(33.333% - 40px); /* Adjust based on the gap to fit three items per row */
+    background-color: white; /* Sets the background color of the recipe cards to white */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
+    border-radius: 8px; /* Rounds the corners of the cards */
+    padding: 20px; /* Adds spacing inside the cards */
+    margin-bottom: 20px; /* Adds space between the cards */
+    box-sizing: border-box; /* Ensures padding and border are included in the total width and height */
+    }
+
+
+.pantry-list {
+    list-style-type: disc; /* Enables bullet points */
+    padding-left: 20px; /* Adds indentation to list */
+    max-width: 600px; /* Adjust as needed */
+    margin: auto; /* Centers the list */
+}
+    
+.pantry-list li {
+    background-color: #fff; /* White background for each list item */
+    margin-bottom: 10px; /* Space between items */
+    padding: 10px;
+    border-radius: 5px; /* Rounded corners for list items */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    display: flex;
+     justify-content: space-between; /* Aligns the item text and the remove button */
+    align-items: center;
+}
+    
+.pantry-list form {
+    margin: 0; /* Removes any default margin */
+}
+    
+.pantry-list input[type="submit"] {
+    position: relative;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+    
+.pantry-list input[type='submit']::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.pantry-list input[type='submit']::before {
+    color: white;
+}
+
+.pantry-list input[type="submit"]:hover {
+    background-color: #d35400; /* Lighter shade on hover */
+}
+
+.pantry-list input[type='submit']:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.center-link {
+    text-align: center;
+    margin-top: 20px; /* Optional: Adds some space above the link */
+}
+
+.center-link a {
+    position: relative;
+    color: #e67e22; /* Initial color */
+    background-color: transparent;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: color 0.3s ease-out;
+}
+
+.center-link a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #e67e22;
+    transition: width 0.3s ease-out, left 0.3s ease-out;
+}
+
+.center-link a:hover {
+    color: #d35400; /* Darker shade on hover */
+}
+
+.center-link a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.input-submit {
+    position: relative;
+    background-color: transparent;
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: color 0.3s ease;
+}
+
+.input-submit::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #e67e22;
+    z-index: -1;
+    transition: height 0.3s ease;
+    border-radius: 5px;
+}
+
+.input-submit:hover {
+    color: white;
+}
+
+.input-submit:hover::before {
+    height: 100%;
+}

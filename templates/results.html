@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+</head>
+<body>
+    {% if recipes %}
+        <h1>Suggested Recipes Based on Your Pantry</h1>
+        <div class="recipes-container">
+            {% for recipe in recipes %}
+                <div class="recipe">
+                    <img src="{{ recipe.image }}" alt="Image of {{ recipe.title }}" style="width:100%; border-radius: 8px;">
+                    <h2>{{ recipe.title }}</h2>
+                    <p><strong>Servings:</strong> {{ recipe.servings }}</p>
+                    {% if recipe.preparationMinutes %}
+                        <p><strong>Preparation Time:</strong> {{ recipe.preparationMinutes }} minutes</p>
+                    {% endif %}
+                    {% if recipe.cookingMinutes %}
+                        <p><strong>Cooking Time:</strong> {{ recipe.cookingMinutes }} minutes</p>
+                    {% endif %}
+
+                    <h3>Ingredients:</h3>
+                    <ul>
+                        {% for ingredient in recipe.extendedIngredients %}
+                            <li>{{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.name }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <h3>Instructions:</h3>
+                    <ol>
+                        {% set steps = recipe.instructions.split('.') %}
+                        {% for step in steps %}
+                            {% if step %}
+                                <li>{{ step | safe }}.</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No recipes found based on your pantry items. Try adding more ingredients.</p>
+    {% endif %}
+    <a href="/">Search again</a>
+</body>
+</html>
